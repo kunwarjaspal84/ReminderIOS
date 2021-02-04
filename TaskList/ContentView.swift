@@ -8,19 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    let tsks = testTaskData
+    @ObservedObject var taskListVM = TaskListViewModel()
+    @State var presentAddItem = false
     var body: some View {
         
         NavigationView{
             VStack(alignment: .leading) {
-                List(tsks) { Task in
-                    Image(systemName: Task.completed ? "circle.fill" : "circle")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Text(Task.title)
-                        .padding(1.5)
+                List{
+                ForEach(taskListVM.taskCellViewModels) { Task in
+                    TaskCell(taskCellVM: Task)
                 }
-                Button(action: {}) {
+                    if presentAddItem {
+                        TaskCell(taskCellVM: TaskCellViewModel(task: Task(title: "", completed: false))){
+                            task in taskListVM.addItem(task: task)
+                            self.presentAddItem.toggle()
+                        }
+                    }
+                }
+                Button(action: {self.presentAddItem.toggle()}) {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
                         .frame(width: 20, height: 20)
@@ -36,5 +41,23 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct TaskCell: View {
+    @ObservedObject var taskCellVM:TaskCellViewModel
+    
+    var onCommit:(Task) -> (Void) = {_ in }
+    var body: some View {
+        HStack{
+        Image(systemName: taskCellVM.task.completed ? "circle.fill" : "circle")
+            .resizable()
+            .frame(width: 20, height: 20)
+            .onTapGesture {
+                self.taskCellVM.task.completed.toggle()
+            }
+            TextField("Enter the task", text: $taskCellVM.task.title, onCommit: {self.onCommit(self.taskCellVM.task)})
+            .padding(1.5)
+    }
     }
 }
