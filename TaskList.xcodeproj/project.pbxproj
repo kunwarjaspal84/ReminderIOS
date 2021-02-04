@@ -14,6 +14,8 @@
 		C149C2AD25C13F4C00D2A042 /* TaskListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149C2AC25C13F4C00D2A042 /* TaskListTests.swift */; };
 		C149C2B825C13F4C00D2A042 /* TaskListUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149C2B725C13F4C00D2A042 /* TaskListUITests.swift */; };
 		C149C2C925C13FAA00D2A042 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = C149C2C825C13FAA00D2A042 /* Model.swift */; };
+		C1C2027525CBE5FE00AD3378 /* TaskCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C2027425CBE5FE00AD3378 /* TaskCellViewModel.swift */; };
+		C1C2027E25CBEB4600AD3378 /* TaskListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C2027D25CBEB4600AD3378 /* TaskListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		C149C2B725C13F4C00D2A042 /* TaskListUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListUITests.swift; sourceTree = "<group>"; };
 		C149C2B925C13F4C00D2A042 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C149C2C825C13FAA00D2A042 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		C1C2027425CBE5FE00AD3378 /* TaskCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCellViewModel.swift; sourceTree = "<group>"; };
+		C1C2027D25CBEB4600AD3378 /* TaskListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 		C149C2CD25C13FB300D2A042 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				C1C2027425CBE5FE00AD3378 /* TaskCellViewModel.swift */,
+				C1C2027D25CBEB4600AD3378 /* TaskListViewModel.swift */,
 				C149C2C825C13FAA00D2A042 /* Model.swift */,
 			);
 			path = Model;
@@ -272,6 +278,8 @@
 			files = (
 				C149C2C925C13FAA00D2A042 /* Model.swift in Sources */,
 				C149C29D25C13F4800D2A042 /* ContentView.swift in Sources */,
+				C1C2027E25CBEB4600AD3378 /* TaskListViewModel.swift in Sources */,
+				C1C2027525CBE5FE00AD3378 /* TaskCellViewModel.swift in Sources */,
 				C149C29B25C13F4800D2A042 /* TaskListApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
