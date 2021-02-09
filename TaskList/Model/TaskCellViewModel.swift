@@ -10,6 +10,8 @@ import Combine
 
 class TaskCellViewModel: ObservableObject, Identifiable {
     @Published var task: Task
+    
+    @Published var taskrepository = TaskRespository()
     var id = ""
     @Published var completionStateIconName:String = ""
     private var cancellables = Set<AnyCancellable>()
@@ -19,16 +21,24 @@ class TaskCellViewModel: ObservableObject, Identifiable {
         
         $task
             .map{ task in
-                task.completed ? "Circle.fill" : "circle"
+                task.completed ? "checkmark.circle.fill" : "circle"
             }
             .assign(to: \.completionStateIconName, on: self)
             .store(in: &cancellables)
         $task
-        .map
+        .compactMap
         { task in
         task.id
         }
             .assign(to: \.id, on: self)
+            .store(in: &cancellables)
+        
+        $task
+            .dropFirst()
+            .debounce(for: 0.8, scheduler: RunLoop.main)
+            .sink { (task) in
+                self.taskrepository.updateTask(task)
+            }
             .store(in: &cancellables)
     }
     
